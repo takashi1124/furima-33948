@@ -16,7 +16,7 @@ furima
 ### Association
 
 -has_many :items
--has_many :Orders
+-has_many :orders
 
 ## Itemsテーブル
 
@@ -25,7 +25,6 @@ furima
 | name                         | string     | null: false                    |
 | category_id                  | text       | null: false                    |
 | price                        | integer    | null: false                    |
-| seller                       | text       | null: false                    |
 | information                  | text       | null: false                    |
 | state_id                     | integer    | null: false                    |
 | shipment_source_id           | integer    | null: false                    |
@@ -54,15 +53,15 @@ furima
 
 ## Shipping_addressesテーブル
 
-| Column       | Type       | Options                        |
-| ------------ | ---------- | ------------------------------ |
-| prefecture   | string     | null: false                    |
-| postal_code  | string     | null: false                    |
-| address      | string     | null: false                    |
-| city         | string     | null: false                    |
-| building     | string     |                                |
-| phone_number | string     | null: false                    |
-| order        | references | null: false, foreign_key: true |
+| Column             | Type       | Options                        |
+| ------------------ | ---------- | ------------------------------ |
+| item-prefecture_id | integer    | null: false                    |
+| postal_code        | string     | null: false                    |
+| address            | string     | null: false                    |
+| city               | string     | null: false                    |
+| building           | string     |                                |
+| phone_number       | string     | null: false                    |
+| order              | references | null: false, foreign_key: true |
 
 ### Association
 
