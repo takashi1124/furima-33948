@@ -27,7 +27,6 @@ furima
 | price                        | integer    | null: false                    |
 | information                  | text       | null: false                    |
 | state_id                     | integer    | null: false                    |
-| shipment_source_id           | integer    | null: false                    |
 | item-shipping-fee-status_id  | integer    | null: false                    |
 | item-prefecture_id           | integer    | null: false                    |
 | item-scheduled-delivery_id   | integer    | null: false                    |
