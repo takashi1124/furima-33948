@@ -23,7 +23,7 @@ furima
 | Column                       | Type       | Options                        |
 | ---------------------------- | ---------- | ------------------------------ |
 | name                         | string     | null: false                    |
-| category_id                  | text       | null: false                    |
+| category_id                  | integer    | null: false                    |
 | price                        | integer    | null: false                    |
 | information                  | text       | null: false                    |
 | state_id                     | integer    | null: false                    |
@@ -49,7 +49,7 @@ furima
 
 -belongs_to :user
 -belongs_to :item
--has_one :shipping_addresses
+-has_one :shipping_address
 
 ## Shipping_addressesテーブル
 
