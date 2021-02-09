@@ -34,27 +34,27 @@ RSpec.describe Item, type: :model do
         expect(@item.errors.full_messages).to include("Information can't be blank")
       end
       it 'カテゴリーを選択しないと出品できない' do
-        @item.category_id = '1'
+        @item.category_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include("Category must be other than 1")
       end
       it '商品の状態を選択しないと出品できない' do
-        @item.state_id = '1'
+        @item.state_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include("State must be other than 1")
       end
       it '配送料の負担を選択しないと出品できない' do
-        @item.item_shipping_fee_status_id = '1'
+        @item.item_shipping_fee_status_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include("Item shipping fee status must be other than 1")
       end
       it '発送元の地域を選択しないと出品できない' do
-        @item.item_prefecture_id = '1'
+        @item.item_prefecture_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include("Item prefecture must be other than 1")
       end
       it '発送までの日数を選択しないと出品できない' do
-        @item.item_scheduled_delivery_id = '1'
+        @item.item_scheduled_delivery_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include("Item scheduled delivery must be other than 1")
       end
@@ -66,7 +66,25 @@ RSpec.describe Item, type: :model do
       it '販売価格が全角数字では出品できない' do
         @item.price = '１１１１１１'
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price is not included in the list")
+        expect(@item.errors.full_messages).to include("Price is not a number")
+      end
+      it '販売価格が半角英数混合では出品できない' do
+        @item.price = '11aaaa'
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Price is not a number")
+      end
+      it '販売価格が英語だけでは出品できない' do
+        @item.price = 'aaaaaa'
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Price is not a number")
+      end
+      it '販売価格が10,000,000円以上では出品できない' do
+        @item.price >= 10000000
+        @item.valid?
+      end
+      it '販売価格が299円以下では出品できない' do
+        @item.price <= 299
+        @item.valid?
       end
     end
   end
