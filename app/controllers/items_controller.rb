@@ -52,7 +52,7 @@ class ItemsController < ApplicationController
   def editor
     if @item.order
       redirect_to root_path
-    elsif 
+    else
       @item.user_id == current_user.id
       redirect_to root_path
     end
@@ -62,4 +62,3 @@ class ItemsController < ApplicationController
     @order = Order.all
   end
 end
-
