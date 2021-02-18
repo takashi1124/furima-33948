@@ -57,8 +57,4 @@ class ItemsController < ApplicationController
       redirect_to root_path
     end
   end
-
-  def order
-    @order = Order.all
-  end
 end
