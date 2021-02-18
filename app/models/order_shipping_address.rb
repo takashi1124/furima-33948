@@ -1,6 +1,6 @@
 class OrderShippingAddress
   include ActiveModel::Model
-  attr_accessor :user_id, :item_id, :item_prefecture_id, :postal_code, :address, :city, :building, :phone_number, :order_id, :token
+  attr_accessor :user_id, :item_id, :item_prefecture_id, :postal_code, :address, :city, :building, :phone_number, :token
 
   validates :item_prefecture_id, numericality: { other_than: 1 }
   with_options presence: true do
@@ -10,7 +10,7 @@ class OrderShippingAddress
     validates :postal_code, format: {with: /\A\d{3}[-]\d{4}\z/}
     validates :address
     validates :city
-    validates :phone_number, format: {with: /\A\d{11}\z/}
+    validates :phone_number, format: {with: /\A\d{,11}\z/}
   end
 
   def save

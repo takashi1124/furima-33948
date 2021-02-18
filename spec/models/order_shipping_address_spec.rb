@@ -58,10 +58,25 @@ RSpec.describe OrderShippingAddress, type: :model do
         @order_shipping_address.valid?
         expect(@order_shipping_address.errors.full_messages).to include ("Phone number is invalid")
       end
+      it '電話番号が英数字混合になっている' do
+        @order_shipping_address.phone_number = '0901234abcd'
+        @order_shipping_address.valid?
+        expect(@order_shipping_address.errors.full_messages).to include ("Phone number is invalid")
+      end
       it 'クレジットカード情報が入力されていない' do
         @order_shipping_address.token = nil
         @order_shipping_address.valid?
         expect(@order_shipping_address.errors.full_messages).to include ("Token can't be blank")
+      end
+      it 'ユーザー情報が空では登録できない' do
+        @order_shipping_address.user_id = nil
+        @order_shipping_address.valid?
+        expect(@order_shipping_address.errors.full_messages).to include ("User can't be blank")
+      end
+      it '商品情報が空では登録できない' do
+        @order_shipping_address.item_id = nil
+        @order_shipping_address.valid?
+        expect(@order_shipping_address.errors.full_messages).to include ("Item can't be blank")
       end
     end
   end
