@@ -50,9 +50,9 @@ class ItemsController < ApplicationController
   end
 
   def editor
-    if @item.order == @item.id
+    if @item.order
       redirect_to root_path
-    else 
+    elsif 
       @item.user_id == current_user.id
       redirect_to root_path
     end
