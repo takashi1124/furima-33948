@@ -53,7 +53,7 @@ class ItemsController < ApplicationController
     unless @item.user_id == current_user.id
       if @item.order
         redirect_to root_path
-      elsif
+      else
         @item.user_id == current_user.id
         redirect_to root_path
       end
